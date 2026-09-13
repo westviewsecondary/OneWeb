@@ -1,0 +1,53 @@
+WESTVIEW ONEWEB — FILES ONLY, NO FOLDERS
+
+1. Create a NEW GitHub repository for OneWeb.
+2. Upload all website files from this ZIP directly into its root. No folders.
+3. Enable GitHub Pages using main / root. Open the published website.
+4. Open control.html to sign in with your EXISTING WESTVIEW WEBSITE admin
+   account. This uses the original school-website database and login,
+   not the newer MIS / OneHome database.
+
+DATABASE
+Your existing configuration and PDFs are preserved. Project:
+oduuqxfvmplmbuhwkajc
+The only compatibility SQL is ONEWEB-COMPATIBILITY.sql. Run it in that
+existing website project's SQL Editor if the optional letter-text column
+has not already been added. It is repeatable and preserves existing data.
+Do not run a fresh setup, reset tables, or change your MIS configuration.
+
+The public site reads the existing school news, events, PDF library,
+transport, staff, houses, vacancies, results, banner and popup settings.
+The pale-blue control room edits those SAME records. Changes therefore
+appear on both this site and the previous Westview website.
+Nothing has been published to GitHub or changed in your live database
+while creating this ZIP.
+
+CONTROL ROOM
+- School notice: enable an information, weather or urgent popup, enter
+  a title, message and optional More information link, then save.
+  Visitors can dismiss it with X, Close or Escape. It appears again when
+  the notice changes. The popup is shown on the home page only.
+- Banner: a smaller information strip across the website.
+- PDFs: upload newsletters, letters, policies and transport documents.
+  Optional letter text preserves paragraphs alongside the original PDF.
+- Publish news, calendar events, transport information and school details.
+- Existing document publication dates and visibility are respected.
+
+LINKS
+OneEducation and OneHome use the exact addresses you supplied.
+The pale-red OneSixth card links to your supplied address and is clearly
+marked Coming soon because the portal has not yet been created.
+Your previous Westview website is linked in the footer.
+
+DESIGN AND CONTENT
+A new rounded OneWeb design, using information from the existing Westview
+website. Static information is in pages.json; update that file for changes
+to long-form admissions, curriculum, uniform and similar pages.
+Live newsletters, transport, news, alerts and PDFs are managed in the
+control room. Campus artwork is the existing illustrative website image.
+No new school contact details, admissions dates or exam results were invented.
+
+If a live section fails to load, a message appears rather than silently
+presenting old updates. Refresh or contact the school before travelling.
+Tested locally with simulated control-room edits; real administrator login
+and publishing require your existing account after upload.
