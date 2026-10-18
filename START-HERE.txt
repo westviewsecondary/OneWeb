@@ -1,53 +1,35 @@
-WESTVIEW ONEWEB — FILES ONLY, NO FOLDERS
+ONELEARN — FIVE-APP SCHOOL PLATFORM
 
-1. Create a NEW GitHub repository for OneWeb.
-2. Upload all website files from this ZIP directly into its root. No folders.
-3. Enable GitHub Pages using main / root. Open the published website.
-4. Open control.html to sign in with your EXISTING WESTVIEW WEBSITE admin
-   account. This uses the original school-website database and login,
-   not the newer MIS / OneHome database.
+This release uses one NEW Supabase project and five static websites. Do not run its installer in the old Westview project. Old Westview sites and records are untouched. This is a deployable pilot release; review it with a school before using real pupil data.
 
-DATABASE
-Your existing configuration and PDFs are preserved. Project:
-oduuqxfvmplmbuhwkajc
-The only compatibility SQL is ONEWEB-COMPATIBILITY.sql. Run it in that
-existing website project's SQL Editor if the optional letter-text column
-has not already been added. It is repeatable and preserves existing data.
-Do not run a fresh setup, reset tables, or change your MIS configuration.
+1. Create a new Supabase project. In SQL Editor run ONELEARN-PLATFORM-SETUP.sql from the OneLearn ZIP, once. It includes the four apps' private school templates and the homework question bank. Do not upload this SQL file to GitHub.
+2. In Supabase Authentication, create and verify the owner account masonsandersbussiness@gmail.com. Choose your own strong password; none is included. Enable email confirmation for new accounts. Configure your SMTP/email service and Authentication Site URL to the final OneLearn URL. Password recovery and email verification depend on this email setup. Public sign-up alone grants NO school access.
+3. Edit config.js in EACH ZIP. Enter the SAME new Supabase URL and publishable/anon key. NEVER use a service-role or secret key. Set all five apps URLs to their real HTTPS GitHub Pages addresses, each ending in /. Defaults assume repositories named OneLearn, OneEducation, OneHome, OneWeb and OneSixth on the same GitHub account.
+4. Upload the website files at the ROOT of each corresponding repository. Enable GitHub Pages for that branch/root and HTTPS. Upload .mjs and .json files as well as HTML/CSS/SVG/JS. Do not upload SQL or this guide. Every ZIP contains only files, with no enclosing directory.
+5. Open OneLearn, sign in as owner, and create a school in the Owner control room. School addresses use lowercase letters, digits and hyphens (3–48 characters). Copy the invitation code and send it privately to the exact administrator email you entered. Codes are shown once, expire in seven days and are single use. Issuing a fresh code for the same school/email invalidates outstanding old ones.
+6. The administrator opens OneLearn, chooses Sign in / invitation, enters their email, invitation code and a password of at least 12 characters, and chooses Create password. They verify their email, return, sign in and redeem the code. Existing users just sign in and redeem. The same verified account works across the apps; different domains/browser tabs may require another sign-in. No password or access token is included in a portal URL.
+7. The school appears in My account. Open School setup to update its logo, name, sixth-form name, contact information and colour, and invite/remove staff. School administrators have management permissions; teachers have the existing restricted teaching permissions. Staff membership is managed here, not the legacy MIS staff access form.
+8. Each app opens with ?school=the-school-address. Give students their SCHOOL-SPECIFIC student portal URL and private login code. OneEducation and OneHome share student/class records within that school. Sixth-form codes remain separate. A student code from another school is rejected.
 
-The public site reads the existing school news, events, PDF library,
-transport, staff, houses, vacancies, results, banner and popup settings.
-The pale-blue control room edits those SAME records. Changes therefore
-appear on both this site and the previous Westview website.
-Nothing has been published to GitHub or changed in your live database
-while creating this ZIP.
+ONEHOME
+This remains the homework platform: maths, reading and science topic selection, generated assignments, student answers, server grading and results. Its question bank is finite, not a complete national curriculum. School setup offers Import from OneEducation / refresh (existing records are shared immediately), or a previewed CSV/text mass import with Year 7–11 selection. Downloaded student login codes must be distributed privately. Imported groups and timetable defaults need review by staff. Mass importing here also creates the same school records visible in OneEducation; it does not duplicate records into a second system.
 
-CONTROL ROOM
-- School notice: enable an information, weather or urgent popup, enter
-  a title, message and optional More information link, then save.
-  Visitors can dismiss it with X, Close or Escape. It appears again when
-  the notice changes. The popup is shown on the home page only.
-- Banner: a smaller information strip across the website.
-- PDFs: upload newsletters, letters, policies and transport documents.
-  Optional letter text preserves paragraphs alongside the original PDF.
-- Publish news, calendar events, transport information and school details.
-- Existing document publication dates and visibility are respected.
+ONEWEB PUBLISHING
+Open the school's OneWeb builder. Add/reorder/delete pages and text, image, PDF or HTTPS-link sections; change colours, logo, typography, school information and the important-information banner. Uploads are stored with the document (2 MB per file, 12 MB total). Save draft is private. Preview does not publish. Publish creates/updates the public snapshot at:
+  YOUR-ONEWEB-HTTPS-URL/website.html?school=the-school-address
+The static viewer reads only that public snapshot. Draft edits remain private until another publish. Unpublish takes it offline while retaining the draft. Hosting this viewer on GitHub Pages supplies HTTPS for every school link; no new certificate is required per school. A custom school domain needs separate DNS/hosting configuration; OneWeb does not register domains. Export standalone website downloads a single index.html for independent hosting; exported copies do not update automatically after subsequent publishing.
 
-LINKS
-OneEducation and OneHome use the exact addresses you supplied.
-The pale-red OneSixth card links to your supplied address and is clearly
-marked Coming soon because the portal has not yet been created.
-Your previous Westview website is linked in the footer.
+SALES / CONTACT
+OneEducation: GBP 142/month or GBP 1,450/year; free for official secondary schools after owner review.
+OneHome: free for all.
+OneWeb: GBP 43/month or GBP 432/year; free for official secondary schools after owner review.
+OneSixth: free for all.
+These are displayed prices, not an automatic billing engine. Eligibility, tax treatment and payment arrangements are confirmed manually before access is approved. All approved school accounts can open all four apps. The website collects contact requests privately in the owner dashboard; it does not send messages on your behalf. Requests are limited to one per email per day, with a form honeypot. Add an infrastructure-level rate limit/CAPTCHA before advertising broadly; this basic limiter does not stop distributed spam.
 
-DESIGN AND CONTENT
-A new rounded OneWeb design, using information from the existing Westview
-website. Static information is in pages.json; update that file for changes
-to long-form admissions, curriculum, uniform and similar pages.
-Live newsletters, transport, news, alerts and PDFs are managed in the
-control room. Campus artwork is the existing illustrative website image.
-No new school contact details, admissions dates or exam results were invented.
+DEMO / EXISTING FEATURES
+Use Try the demo on OneLearn, or ?demo=1 on an app. All demo records are fictional, stored in sessionStorage and never sent to the live school database. OneEducation's demo supports its original local workflows. OneHome includes a smaller sample question bank for practice; OneSixth permits sample imports/choices/notices/registers; some administrative writes require a real approved school. OneWeb demos allow editing and preview but cannot publish a real public site. Refreshing/reopening a new browser session resets demo work.
+The original MIS, homework and sixth-form workflows are retained. There is no automatic migration of Westview records. Timetable periods, UK year ranges and the six-room sixth-form/five-subject model are inherited defaults, not a claim that every UK school follows this structure. Review these defaults before adopting the system. New live schools contain no sample students; generated room/teacher placeholders must be reviewed before operational use.
 
-If a live section fails to load, a message appears rather than silently
-presenting old updates. Refresh or contact the school before travelling.
-Tested locally with simulated control-room edits; real administrator login
-and publishing require your existing account after upload.
+OPERATIONS
+The owner can suspend/reactivate a school. Suspension blocks all app gateway calls, logins to that school's records and its public website. Sessions do not permit bypassing a suspension. Data is retained. School data lives in private PostgreSQL schemas, not browser-readable tables. Only a fixed allowlist of checked app functions is callable. Never expose school_* schemas through the Supabase Data API. Keep the owner account private and set up backups, account recovery and monitoring before a real rollout. This release does not provide an automated billing service, domain registration, statutory school census exports or a production support service.
+Updates to the installer template affect NEW schools. Existing school schemas require separately reviewed migrations; re-running the installer is not an app-data migration. Test changes on a non-live project first.
